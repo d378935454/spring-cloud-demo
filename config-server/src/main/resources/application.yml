@@ -1,0 +1,28 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-center
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+#          search-locations: file:///${user.home}/config-repo
+          search-locations: file:D:\\config-repo
+#        git:
+#          uri: https://git.oschina.net/gongxusheng/spring-config-demo.git
+#          searchPaths: my-sample-config
+    consul:
+      host: localhost
+      port: 8500
+      enabled: true
+      discovery:
+        instanceId:   config1
+        health-check-interval: 10s
+        health-check-url: http://localhost:8888/health
+        hostname: localhost
+        port: ${server.port}
+        tags: dev
+        service-name: config

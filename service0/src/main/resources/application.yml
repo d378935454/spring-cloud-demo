@@ -1,0 +1,19 @@
+spring:
+  cloud:
+
+    consul:
+          host: localhost
+          port: 8500
+          enabled: true
+          discovery:
+            instanceId:   service01
+            health-check-interval: 10s
+            health-check-url: http://localhost:${server.port}/health
+            hostname: localhost
+            port: ${server.port}
+            tags: dev
+            service-name: service0
+  application:
+    name: service0
+server:
+  port: 8081
